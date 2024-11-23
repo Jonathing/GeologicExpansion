@@ -18,7 +18,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -33,7 +33,7 @@ public class GeyserBlockEntity extends BlockEntity {
 
     public GeyserBlockEntity(BlockPos pos, BlockState state) {
         super(GEBlockEntities.GEYSER.get(), pos, state);
-    }
+    } public GeyserBlockEntity(BlockEntityType<? extends GeyserBlockEntity> blockEntityType, BlockPos pos, BlockState state) { super(blockEntityType, pos, state); }
 
     private int initialCooldown() {
         RandomSource random = this.level != null ? this.level.getRandom() : RandomSource.create();

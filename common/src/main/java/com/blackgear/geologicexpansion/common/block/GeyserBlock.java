@@ -188,12 +188,12 @@ public class GeyserBlock extends BaseEntityBlock implements SimpleWaterloggedBlo
     @Nullable @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new GeyserBlockEntity(pos, state);
-    }
+    } protected BlockEntityType<? extends GeyserBlockEntity> getBlockEntityType() { return GEBlockEntities.GEYSER.get(); }
 
     @Nullable @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
         if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
-            return createTickerHelper(type, GEBlockEntities.GEYSER.get(), level.isClientSide ? GeyserBlockEntity::clientTicker : GeyserBlockEntity::serverTicker);
+            return createTickerHelper(type, this.getBlockEntityType(), level.isClientSide ? GeyserBlockEntity::clientTicker : GeyserBlockEntity::serverTicker);
         } else {
             return null;
         }
